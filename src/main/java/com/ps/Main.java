@@ -13,10 +13,15 @@ public class Main {
         System.out.println("(M)ortgage, (F)uture Value, or (P)resent Value?");
         String response = scanner.nextLine();
         if (response.equalsIgnoreCase("m")) {
-         mortgageCalc();
+            mortgageCalc();
+        }
+        else if (response.equalsIgnoreCase("f")){
+        }
+        else if (response.equalsIgnoreCase("p")){
 
         }
     }
+    //first static method (mortgage calculator)
     public static double mortgageCalc(){
         System.out.println("Enter Principal");
         double principal = scanner.nextFloat();
@@ -24,8 +29,23 @@ public class Main {
         double iRate = scanner.nextFloat();
         System.out.println("Enter Length");
         int length = scanner.nextInt();
-        return 0;
-    }
 
+        double monthlyiRate = iRate / 100 / 12;
+        int lengthMonths = length * 12;
+        double monthlyPayment = (principal * monthlyiRate) / (1 - Math.pow(1+ monthlyiRate, - lengthMonths));
+        double totalPayment = monthlyPayment * lengthMonths;
+        double interestPaid = totalPayment - principal;
+        System.out.println("Your expected monthly payment is: " + String.format("%.2f",monthlyPayment));
+        System.out.println("Your total interest paid is: " + String.format("%.2f",interestPaid));
+
+
+
+
+
+
+
+
+        return monthlyPayment;
+    }
 }
 
