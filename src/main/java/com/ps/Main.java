@@ -22,6 +22,9 @@ public class Main {
         else if (response.equalsIgnoreCase("p")){
 
         }
+        else {
+            System.out.println("Invalid Input");
+        }
     }
     //first static method (mortgage calculator)
     public static double mortgageCalc(){
