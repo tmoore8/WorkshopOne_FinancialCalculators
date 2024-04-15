@@ -20,7 +20,7 @@ public class Main {
             futureCalc();
         }
         else if (response.equalsIgnoreCase("p")){
-
+            presentCalc();
         }
         else {
             System.out.println("Invalid Input");
@@ -55,12 +55,27 @@ public class Main {
 
             double dailyiRate = iRate / 100 / 365;
             int lengthDays = length * 365;
-            int compoundPeriod = 365 * length;
             double futureValue = deposit * Math.pow(1+ dailyiRate, lengthDays);
             double interestEarned = futureValue - deposit;
             System.out.println("Your expected future value is: " + String.format("%.2f", futureValue));
             System.out.println("Your total interest earned is: " + String.format("%.2f", interestEarned));
-        return futureValue;
+            return futureValue;
+    }
+    // third static method (present value)
+    public static double presentCalc(){
+        System.out.println("Enter Monthly Payout");
+        double monthlyPayout = scanner.nextFloat();
+        System.out.println("Enter Interest Rate");
+        double iRate = scanner.nextFloat();
+        System.out.println("Enter Length");
+        int length = scanner.nextInt();
+
+        double monthlyiRate = iRate / 100 / 12;
+        int totalPayments = length * 12;
+        double presentValue = monthlyPayout * ((1 - Math.pow(1 + monthlyiRate, -totalPayments)) / monthlyiRate);
+        System.out.println("Your expected present value should be: " + String.format("%.2f", presentValue));
+        return presentValue;
     }
 }
+
 
